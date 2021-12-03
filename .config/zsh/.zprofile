@@ -12,8 +12,9 @@ unsetopt PROMPT_SP
 
 # Default programs:
 export EDITOR="vim"
-export TERMINAL="st"
+export TERMINAL="foot"
 export BROWSER="librewolf"
+export LAUNCHER="dmenu"
 
 # Setting $XDG_RUNTIME_DIR
 if test -z "${XDG_RUNTIME_DIR}"; then
@@ -23,6 +24,7 @@ if test -z "${XDG_RUNTIME_DIR}"; then
          chmod 0700 "${XDG_RUNTIME_DIR}"
      fi
 fi
+
 export VDPAU_DRIVER=radeonsi
 # ~/ Clean-up:
 export XDG_CONFIG_HOME="$HOME/.config"
