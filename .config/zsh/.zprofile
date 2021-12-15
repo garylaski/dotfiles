@@ -14,7 +14,7 @@ unsetopt PROMPT_SP
 export EDITOR="vim"
 export TERMINAL="foot"
 export BROWSER="librewolf"
-export LAUNCHER="dmenu"
+export LAUNCHER="bemenu-run"
 
 # Setting $XDG_RUNTIME_DIR
 if test -z "${XDG_RUNTIME_DIR}"; then
