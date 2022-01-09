@@ -13,8 +13,7 @@ unsetopt PROMPT_SP
 # Default programs:
 export EDITOR="vim"
 export TERMINAL="foot"
-export BROWSER="librewolf"
-export LAUNCHER="bemenu-run"
+export LAUNCHER="foot --window-size-pixels=400x200 -a=menu menu"
 
 # Setting $XDG_RUNTIME_DIR
 if test -z "${XDG_RUNTIME_DIR}"; then
@@ -55,9 +54,9 @@ export LESSOPEN="| /usr/bin/highlight -O ansi %s 2>/dev/null"
 export QT_QPA_PLATFORMTHEME=gtk2	#Have QT use gtk2 theme.
 export MOZ_USE_XINPUT2="1"		# Mozilla smooth scrolling/touchpads.
 export GTK_THEME=Adwaita:dark
+LS_COLORS=$LS_COLORS:'ow=30;44:'
 # [ ! -f ${XDG_CONFIG_HOME:-$HOME/.config}/shell/shortcutrc ] && shortcuts >/dev/null 2>&1 &
 
 [ "$(tty)" = "/dev/tty1" ] && sway
 #startx "$XINITRC" -- -nolisten tcp
-
 
