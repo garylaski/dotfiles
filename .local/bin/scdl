@@ -1,0 +1,3 @@
+#!/bin/sh
+[ -z $1 ] && youtube-dl --add-header "Authorization:OAuth $SOUNDCLOUD_OAUTH" "$SOUNDCLOUD_DEFAULT_URL" && exit 0
+youtube-dl --add-header "Authorization:OAuth $SOUNDCLOUD_OAUTH" $1
