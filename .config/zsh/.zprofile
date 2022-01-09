@@ -6,12 +6,13 @@
 # to clean up.
 
 # Adds `~/.local/bin` to $PATH
-export PATH="$PATH:${$(find ~/.local/bin -type d -printf %p:)%%:}"
+export PATH="$PATH:$HOME/.local/bin"
 unsetopt PROMPT_SP
 
 # Default programs:
 export EDITOR="vim"
-export TERMINAL="foot"
+export TERM="foot"
+export BROWSER="librewolf"
 export LAUNCHER="foot --window-size-pixels=400x200 -a=menu menu"
 
 # Setting $XDG_RUNTIME_DIR
