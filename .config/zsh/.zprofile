@@ -7,7 +7,6 @@
 
 # Adds `~/.local/bin` to $PATH
 export PATH="$PATH:${$(find ~/.local/bin -type d -printf %p:)%%:}"
-
 unsetopt PROMPT_SP
 
 # Default programs:
@@ -55,6 +54,10 @@ export QT_QPA_PLATFORMTHEME=gtk2	#Have QT use gtk2 theme.
 export MOZ_USE_XINPUT2="1"		# Mozilla smooth scrolling/touchpads.
 export GTK_THEME=Adwaita:dark
 LS_COLORS=$LS_COLORS:'ow=30;44:'
+
+# Add private environmental vars
+[ -f "${XDG_CONFIG_HOME:-$HOME/.config}/shell/env-private" ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/shell/env-private"
+
 # [ ! -f ${XDG_CONFIG_HOME:-$HOME/.config}/shell/shortcutrc ] && shortcuts >/dev/null 2>&1 &
 
 [ "$(tty)" = "/dev/tty1" ] && sway
