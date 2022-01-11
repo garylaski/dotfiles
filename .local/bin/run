@@ -1,0 +1,16 @@
+#!/bin/sh
+
+# Run a file based on extension.
+
+file=$(readlink -f "$1")
+dir=${file%/*}
+base="${file%.*}"
+ext="${file##*.}"
+
+cd "$dir" || exit 1
+
+case "$ext" in
+        ms) setsid -f zathura "$base".pdf ;;
+        java) java "${1%.*}" ;;
+        *) exit 1 ;;
+esac

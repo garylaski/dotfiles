@@ -1,0 +1,16 @@
+#!/bin/sh
+
+# Compile a file based on extension.
+
+file=$(readlink -f "$1")
+dir=${file%/*}
+base="${file%.*}"
+ext="${file##*.}"
+
+cd "$dir" || exit 1
+
+case "$ext" in
+        ms) preconv "$file" | refer -PS -e | groff -me -ms -kept -T pdf > "$base".pdf ;;
+        java) javac "$file" ;;
+        *) exit 1 ;;
+esac
