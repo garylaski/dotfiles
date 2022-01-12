@@ -14,6 +14,7 @@ export EDITOR="vim"
 export TERM="foot"
 export BROWSER="librewolf"
 export LAUNCHER="foot --window-size-pixels=400x200 -a=menu menu"
+export TZ='America/New_York'
 
 # Setting $XDG_RUNTIME_DIR
 if test -z "${XDG_RUNTIME_DIR}"; then
