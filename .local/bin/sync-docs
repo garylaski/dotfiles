@@ -1,9 +1,9 @@
 #!/bin/sh
 if [ $1 = "push" ]; then
-	rsync -rvcz --delete ~/docs/classes/ $SERVER_USER@$SERVER_ADDRESS:/docs/classes/ 
+	rsync -rvcz ~/docs/classes/ $SERVER_USER@$SERVER_ADDRESS:/docs/classes/ 
 	exit 0
 elif [ $1 = "pull" ]; then 
-	rsync -rvcz --delete $SERVER_USER@$SERVER_ADDRESS:/docs/classes/ ~/docs/classes
+	rsync -rvcz $SERVER_USER@$SERVER_ADDRESS:/docs/classes/ ~/docs/classes
 	exit 0
 fi
 exit 1
