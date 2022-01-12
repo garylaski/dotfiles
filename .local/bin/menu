@@ -1,16 +1,11 @@
 #!/bin/sh
 if [ $(pgrep fzf) ]; 
 then 
-    pkill fzf
-    return 1
+	pkill fzf
+	return 1
 else
-    IFS=':'
-    get_selection() {
-        for p in $PATH; do
-            ls "$p"
-        done | fzf --no-info
-    }
-    if selection=$( get_selection ); then
-        setsid -f "$selection"
-    fi
+	IFS=':'
+	for p in $PATH; do
+		ls "$p"
+	done | sort -u | fzf --no-info | setsid -f sh
 fi
