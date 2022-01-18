@@ -1,0 +1,71 @@
+#!/bin/sh
+source_dirs="/backup/source/lossless /backup/source/soundcloud /backup/source/youtube /backup/source/ddl"
+encoded_dir="/backup/encoded"
+source_db="$XDG_CACHE_HOME/sourcedb"
+encoded_db="$XDG_CACHE_HOME/encodeddb"
+tmp_db="$XDG_CACHE_HOME/tmpdb"
+tmp2="$XDG_CACHE_HOME/tmpdb2"
+dirname() {
+    dir=${1:-.}
+    dir=${dir%%"${dir##*[!/]}"}
+    [ "${dir##*/*}" ] && dir=.
+    dir=${dir%/*}
+    dir=${dir%%"${dir##*[!/]}"}
+    printf '%s\n' "${dir:-/}"
+}
+encode_file() {
+	if [ -d "$1" ]; then
+		mkdir -p "$2"
+	else 
+        	ext=$(echo ${1##*.})
+		case "$ext" in
+                	flac|aac|opus|m4a|wav)
+			        echo $2 >> $tmp2
+                        	ffmpeg -nostdin -i "$1" -q:a 0 "$2";;
+                	mp3)
+			        echo $2 >> $tmp2
+                        	cp "$1" "$2";;
+                	jpg|jpeg|png)
+                        	ffmpeg -nostdin -i "$1" -vf "scale='min(iw, 500):-1'" "$2";;
+                	*) ;;
+		esac
+	fi
+}
+find $encoded_dir | sort - > $encoded_db
+for dir in $source_dirs; do
+	[ ! -d $dir ] && echo "Incorrect directory specified: $dir" && continue;
+	find $dir >> $source_db
+	find $dir | sed -e "s|$dir|$encoded_dir|g" -e "s|flac|mp3|g" -e "s|aac|mp3|g" -e "s|m4a|mp3|g" -e "s|opus|mp3|g" -e "s|wav|mp3|g" -e "s|png|jpg|g" -e "s|jpeg|jpg|g" >> $tmp_db
+done
+paste --delimiter='|' $source_db $tmp_db > $tmp2
+mv $tmp2 $source_db
+src=$(cat $source_db | cut -d'|' -f2 | sort -u - | diff $encoded_db -)
+IFS='
+'
+for line in $src; do
+	case $line in
+		\>\ *)
+			orig=$(echo $line | tail -c+3 | grep -F -m 1 -f - $source_db)
+			src=$(echo $orig | cut -d'|' -f1)
+			dest=$(echo $orig | cut -d'|' -f2)
+			encode_file "$src" "$dest" ;;
+		\<\ *) orig=$(echo $line | tail -c+3 )
+		        if [ -d "$orig" ]; then
+				echo "$orig"
+			        rm -rvI "$orig"
+			fi
+			if [ -f "$orig" ]; then
+			        echo "$orig"
+			        rm -vi "$orig"
+			fi;;
+		*);;
+	esac
+done
+rm $tmp_db
+mv $source_db $source_db.old
+mv $encoded_db $encoded_db.old
+if [ -f "$tmp2" ]; then
+        cat $tmp2 | xargs -d'\n' picard -c $XDG_CONFIG_HOME/MusicBrainz/Picard-mp3.ini
+        musicsync
+	rm "$tmp2"
+fi
