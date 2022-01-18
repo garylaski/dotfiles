@@ -12,7 +12,7 @@ unsetopt PROMPT_SP
 # Default programs:
 export EDITOR="vim"
 export TERM="foot"
-export BROWSER="librewolf"
+export BROWSER="apulse librewolf"
 export LAUNCHER="foot --window-size-pixels=400x200 -a=menu menu"
 export TZ='America/New_York'
 
