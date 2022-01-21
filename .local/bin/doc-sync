@@ -1,12 +1,21 @@
 #!/bin/sh
-if [ $1 = "push" ]; then
-	rsync -rvcz ~/docs/ $SERVER_USER@$SERVER_ADDRESS:/docs/
+FLAGS=rvcz
+FLAGS2=""
+DIRECTION=$1
+while getopts "dn" args; do
+	DIRECTION=$2
+	case "${args}" in
+		n)FLAGS=rvczn;;
+		d)FLAGS2=delete;;
+		*);;
+	esac
+done
+
+if [ $DIRECTION = "push" ]; then
+	rsync -$FLAGS -b --$FLAGS2 --backup-dir=/docsold/ ~/docs/ $SERVER_USER@$SERVER_ADDRESS:/docs/
 	exit 0
-elif [ $1 = "pull" ]; then 
-	rsync -rvcz $SERVER_USER@$SERVER_ADDRESS:/docs/ ~/docs/
-	exit 0
-elif [ $1 = "delete" ]; then 
-	rsync -rvczb --delete --backup-dir=/docsold ~/docs/ $SERVER_USER@$SERVER_ADDRESS:/docs/
+elif [ $DIRECTION = "pull" ]; then 
+	rsync -$FLAGS --$FLAGS2 $SERVER_USER@$SERVER_ADDRESS:/docs/ ~/docs/
 	exit 0
 fi
 exit 1
