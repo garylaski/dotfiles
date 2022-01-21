@@ -55,7 +55,8 @@ export LESSOPEN="| /usr/bin/highlight -O ansi %s 2>/dev/null"
 export QT_QPA_PLATFORMTHEME=gtk2	#Have QT use gtk2 theme.
 export MOZ_USE_XINPUT2="1"		# Mozilla smooth scrolling/touchpads.
 export GTK_THEME=Adwaita:dark
-LS_COLORS=$LS_COLORS:'ow=30;44:'
+export LS_COLORS=$LS_COLORS:'ow=30;44:'
+export CLASSPATH="$XDG_DATA_HOME/java"
 
 # Add private environmental vars
 [ -f "${XDG_CONFIG_HOME:-$HOME/.config}/shell/env-private" ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/shell/env-private"
