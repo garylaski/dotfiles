@@ -7,5 +7,5 @@ else
 	IFS=':'
 	for p in $PATH; do
 		ls "$p"
-	done | sort -u | fzf --no-info | setsid -f sh
+	done | sort -u | fzf --no-info | xargs setsid -f 
 fi
