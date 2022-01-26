@@ -1,6 +1,6 @@
 set $mod Mod4
 
-output * bg $XDG_CACHE_HOME/wallpaper fill
+output \* bg $(find $(xdg-user-dir PICTURES)/wallpapers -type f | shuf -n 1) fill
 
 default_border none
 gaps inner 15
@@ -14,6 +14,7 @@ bindsym $mod+c kill
 bindsym $mod+b exec $BROWSER
 bindsym $mod+Return exec $TERM
 bindsym $mod+Space exec $LAUNCHER
+bindsym $mod+w exec swaymsg output \* bg $(find $(xdg-user-dir PICTURES)/wallpapers -type f | shuf -n 1) fill
 
 bindsym XF86AudioRaiseVolume exec amixer set Master 1%+
 bindsym XF86AudioLowerVolume exec amixer set Master 1%-
