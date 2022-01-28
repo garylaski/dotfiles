@@ -10,6 +10,6 @@ ext="${file##*.}"
 cd "$dir" || exit 1
 
 case "$ext" in
-        java) java -jar checkstyle-9.2.1-all.jar -c checkstyle.xml $file;;
+        java) java -jar $CLASSPATH/checkstyle-9.2.1-all.jar -c $CLASSPATH/checkstyle.xml $file;;
         *) exit 1 ;;
 esac
