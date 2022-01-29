@@ -42,6 +42,7 @@ export HISTFILE="${XDG_DATA_HOME:-$HOME/.local/share}/history"
 # Other program settings:
 #export QT_STYLE_OVERRIDE="gtk2"
 export MOZ_ENABLE_WAYLAND=1
+export GDK_BACKEND=wayland
 export FZF_DEFAULT_OPTS="--layout=reverse --height 40%"
 export LESS=-R
 export LESS_TERMCAP_mb="$(printf '%b' '[1;31m')"
