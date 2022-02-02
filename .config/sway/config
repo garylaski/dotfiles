@@ -1,6 +1,6 @@
 set $mod Mod4
 
-output \* bg $(find $(xdg-user-dir PICTURES)/wallpapers -type f | shuf -n 1) fill
+output * bg $(find $(xdg-user-dir PICTURES)/wallpapers -type f | shuf -n 1) fill
 
 default_border none
 gaps inner 15
