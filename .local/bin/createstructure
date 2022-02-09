@@ -35,7 +35,7 @@ find $encoded_dir | sort - > $encoded_db
 for dir in $source_dirs; do
 	[ ! -d $dir ] && echo "Incorrect directory specified: $dir" && continue;
 	find $dir >> $source_db
-	find $dir | sed -e "s|$dir|$encoded_dir|g" -e "s|flac|mp3|g" -e "s|aac|mp3|g" -e "s|m4a|mp3|g" -e "s|opus|mp3|g" -e "s|wav|mp3|g" -e "s|png|jpg|g" -e "s|jpeg|jpg|g" >> $tmp_db
+	find $dir | sed -e "s|$dir|$encoded_dir|g" -e "s|\.flac|\.mp3|g" -e "s|\.aac|\.mp3|g" -e "s|\.m4a|\.mp3|g" -e "s|\.opus|\.mp3|g" -e "s|\.wav|\.mp3|g" -e "s|\.png|\.jpg|g" -e "s|\.jpeg|\.jpg|g" >> $tmp_db
 done
 paste --delimiter='|' $source_db $tmp_db > $tmp2
 mv $tmp2 $source_db
