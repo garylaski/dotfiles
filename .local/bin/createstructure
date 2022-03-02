@@ -1,5 +1,5 @@
 #!/bin/sh
-source_dirs="/backup/source/lossless /backup/source/soundcloud /backup/source/youtube /backup/source/ddl"
+source_dirs=$(find /backup/source -maxdepth 1 -mindepth 1)
 encoded_dir="/backup/encoded"
 source_db="$XDG_CACHE_HOME/sourcedb"
 encoded_db="$XDG_CACHE_HOME/encodeddb"
@@ -19,14 +19,16 @@ encode_file() {
 	else 
         	ext=$(echo ${1##*.})
 		case "$ext" in
-                	flac|aac|opus|m4a|wav)
+                	flac|aac|mp3|m4a|wav)
 			        echo $2 >> $tmp2
-                        	ffmpeg -nostdin -i "$1" -q:a 0 "$2";;
-                	mp3)
+                            echo "$1 -> $2"
+                        	ffmpeg -nostdin -v quiet -stats -i "$1" -b:a 128K "$2";;
+                	opus)
 			        echo $2 >> $tmp2
                         	cp "$1" "$2";;
                 	jpg|jpeg|png)
-                        	ffmpeg -nostdin -i "$1" -vf "scale='min(iw, 500):-1'" "$2";;
+                            echo "$1 -> $2"
+                        	ffmpeg -nostdin -v quiet -stats -i "$1" -vf "scale='min(iw, 500):-1'" "$2";;
                 	*) ;;
 		esac
 	fi
@@ -35,7 +37,7 @@ find $encoded_dir | sort - > $encoded_db
 for dir in $source_dirs; do
 	[ ! -d $dir ] && echo "Incorrect directory specified: $dir" && continue;
 	find $dir >> $source_db
-	find $dir | sed -e "s|$dir|$encoded_dir|g" -e "s|\.flac|\.mp3|g" -e "s|\.aac|\.mp3|g" -e "s|\.m4a|\.mp3|g" -e "s|\.opus|\.mp3|g" -e "s|\.wav|\.mp3|g" -e "s|\.png|\.jpg|g" -e "s|\.jpeg|\.jpg|g" >> $tmp_db
+	find $dir | sed -e "s|$dir|$encoded_dir|g" -e "s|\.flac|\.opus|g" -e "s|\.aac|\.opus|g" -e "s|\.m4a|\.opus|g" -e "s|\.mp3|\.opus|g" -e "s|\.wav|\.opus|g" -e "s|\.png|\.jpg|g" -e "s|\.jpeg|\.jpg|g" >> $tmp_db
 done
 paste --delimiter='|' $source_db $tmp_db > $tmp2
 mv $tmp2 $source_db
