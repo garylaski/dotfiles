@@ -37,7 +37,6 @@ export WGETRC="${XDG_CONFIG_HOME:-$HOME/.config}/wget/wgetrc"
 export INPUTRC="${XDG_CONFIG_HOME:-$HOME/.config}/shell/inputrc"
 export HISTFILE="${XDG_DATA_HOME:-$HOME/.local/share}/history"
 export GNUPGHOME="$XDG_DATA_HOME"/gnupg
-export GPG_TTY=$(tty)
 
 # Other program settings:
 export MOZ_ENABLE_WAYLAND=1
