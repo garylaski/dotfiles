@@ -6,7 +6,6 @@ default_border none
 gaps inner 15
 floating_modifier $mod normal
 for_window [app_id="menu"] floating enable, resize set 400 200
-
 bindsym $mod+Shift+c reload
 bindsym $mod+Shift+q exit
 bindsym $mod+c kill
