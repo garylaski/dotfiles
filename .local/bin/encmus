@@ -1,0 +1,35 @@
+#!/bin/sh
+IFS="
+"
+ideallist=""
+for dir in /backup/source/*; do
+    for file in $dir/*/*/*/*; do
+        [ -e "$file" ] || continue;
+        dest="/backup/encoded${file##$dir}";
+        dest="${dest%.*}";
+        destdir=$(dirname $dest);
+        [ -d "$destdir" ] || mkdir -p "$destdir";
+        case "${file##*.}" in
+            jpg | png) 
+                ideallist=$ideallist"$dest.jpg\n";
+                [ -f "$dest.jpg" ] || ffmpeg -v quiet -stats -i "$file" -vf "scale='min(iw, 500):-1'" "$dest.jpg";;
+            opus | mp3 | flac | m4a) 
+                ideallist=$ideallist"$dest.opus\n";
+                if [ -f "$dest.opus" ]; then
+                    [ $(stat -c "%Y" $file) -ge $(stat -c "%Y" "$dest.opus") ] && copytags.py "$file" "$dest.opus"
+                else 
+                    ffmpeg -v quiet -stats -i "$file" -b:a 128K "$dest.opus";
+                    copytags.py "$file" "$dest.opus";
+                fi
+                ;;
+            *) echo "not supported: ${file##*.}" ;;
+        esac
+    done
+done
+find /backup/encoded -type f | sort -u > tmp
+for line in $(echo "$ideallist" | sort -u | diff - tmp); do
+    case "$line" in 
+        \>*) rm -i "${line##\>\ }" ;;
+    esac
+done
+musicsync
