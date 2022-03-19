@@ -26,8 +26,8 @@ for dir in /backup/source/*; do
         esac
     done
 done
-find /backup/encoded -type f | sort -u > tmp
-for line in $(echo "$ideallist" | sort -u | diff - tmp); do
+find /backup/encoded -type f | sort -u > $XDG_CACHE_HOME/tmp
+for line in $(echo "$ideallist" | sort -u | diff - $XDG_CACHE_HOME/tmp); do
     case "$line" in 
         \>*) rm -i "${line##\>\ }" ;;
     esac
