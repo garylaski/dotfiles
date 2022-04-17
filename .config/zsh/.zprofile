@@ -13,7 +13,8 @@ unsetopt PROMPT_SP
 export SVDIR="$HOME/.local/service"
 export EDITOR="vim"
 export TERM="foot"
-export BROWSER="apulse env GDK_BACKEND=wayland librewolf"
+export BROWSER="apulse chromium --force-dark-mode --enable-features=WebUIDarkMode
+ --ozone-platform-hint=auto --ignore-gpu-blocklist --enable-gpu-rasterization --enable-zero-copy"
 export LAUNCHER="foot --window-size-pixels=400x200 -a=menu menu"
 export TZ='America/New_York'
 
