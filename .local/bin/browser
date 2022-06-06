@@ -1,0 +1,3 @@
+#!/bin/sh
+
+chromium --ignore-gpu-blocklist --force-dark-mode --enable-features=WebUIDarkMode --enable-gpu-rasterization --enable-zero-copy --enable-vulkan --ozone-platform=wayland $@
