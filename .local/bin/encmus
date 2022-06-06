@@ -2,6 +2,8 @@
 IFS="
 "
 ideallist=""
+find /backup/source -depth -name "*.aac" -exec sh -c 'f="{}"; mv -- "$f" "${f%.aac}.m4a"' \;
+
 for dir in /backup/source/*; do
     for file in $dir/*/*/*/*; do
         [ -e "$file" ] || continue;
@@ -11,10 +13,12 @@ for dir in /backup/source/*; do
         [ -d "$destdir" ] || mkdir -p "$destdir";
         case "${file##*.}" in
             jpg | png) 
-                ideallist=$ideallist"$dest.jpg\n";
+                ideallist=$ideallist"$dest.jpg
+";
                 [ -f "$dest.jpg" ] || ffmpeg -v quiet -stats -i "$file" -vf "scale='min(iw, 500):-1'" "$dest.jpg";;
             opus | mp3 | flac | m4a) 
-                ideallist=$ideallist"$dest.opus\n";
+                ideallist=$ideallist"$dest.opus
+";
                 if [ -f "$dest.opus" ]; then
                     [ $(stat -c "%Y" $file) -ge $(stat -c "%Y" "$dest.opus") ] && copytags.py "$file" "$dest.opus"
                 else 
@@ -27,7 +31,7 @@ for dir in /backup/source/*; do
     done
 done
 find /backup/encoded -type f | sort -u > $XDG_CACHE_HOME/tmp
-for line in $(echo "$ideallist" | sort -u | diff - $XDG_CACHE_HOME/tmp); do
+for line in $(printf '%s' "$ideallist" | sort -u | diff - $XDG_CACHE_HOME/tmp); do
     case "$line" in 
         \>*) rm -i "${line##\>\ }" ;;
     esac
