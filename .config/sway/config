@@ -6,6 +6,7 @@ default_border none
 gaps inner 15
 floating_modifier $mod normal
 for_window [app_id="menu"] floating enable, resize set 400 200
+for_window [class="REAPER"] layout tabbed
 bindsym $mod+Shift+c reload
 bindsym $mod+Shift+q exit
 bindsym $mod+c kill
@@ -18,6 +19,7 @@ bindsym $mod+w exec swaymsg output \* bg $(find $(xdg-user-dir PICTURES)/wallpap
 bindsym XF86AudioRaiseVolume exec amixer set Master 1%+
 bindsym XF86AudioLowerVolume exec amixer set Master 1%-
 bindsym XF86AudioMute exec amixer set Master toggle
+
 
 bindsym $mod+t layout tabbed
 bindsym $mod+s floating toggle
@@ -50,5 +52,8 @@ input type:keyboard {
     repeat_delay 200
     repeat_rate 40
 }
-
-exec autotiling -w 1 3 5 7 9
+exec pipewire
+exec pipewire-media-session
+exec pipewire-pulse
+exec autotiling
+exec /usr/libexec/xdg-desktop-portal-wlr
