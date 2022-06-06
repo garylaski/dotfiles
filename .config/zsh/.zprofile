@@ -13,8 +13,7 @@ unsetopt PROMPT_SP
 export SVDIR="$HOME/.local/service"
 export EDITOR="vim"
 export TERM="foot"
-export BROWSER="apulse chromium --force-dark-mode --enable-features=WebUIDarkMode
- --ozone-platform-hint=auto --ignore-gpu-blocklist --enable-gpu-rasterization --enable-zero-copy"
+export BROWSER="browser"
 export LAUNCHER="foot --window-size-pixels=400x200 -a=menu menu"
 export TZ='America/New_York'
 
@@ -26,6 +25,11 @@ if test -z "${XDG_RUNTIME_DIR}"; then
          chmod 0700 "${XDG_RUNTIME_DIR}"
      fi
 fi
+# Wayland settings default
+export QT_QPA_PLATFORM=wayland
+export XDG_SESSION_TYPE=wayland
+export XDG_CURRENT_DESKTOP=sway
+#export SDL_VIDEODRIVER=wayland
 
 # ~/ Clean-up:
 export XDG_CONFIG_HOME="$HOME/.config"
@@ -40,7 +44,6 @@ export HISTFILE="${XDG_DATA_HOME:-$HOME/.local/share}/history"
 export GNUPGHOME="$XDG_DATA_HOME"/gnupg
 
 # Other program settings:
-export MOZ_ENABLE_WAYLAND=1
 export FZF_DEFAULT_OPTS="--layout=reverse --height 40%"
 export LESS=-R
 export LESSOPEN="| /usr/bin/highlight -O ansi %s 2>/dev/null"
@@ -50,4 +53,4 @@ export CLASSPATH="$XDG_DATA_HOME/java"
 # Add private environmental vars
 [ -f "${XDG_CONFIG_HOME:-$HOME/.config}/shell/env-private" ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/shell/env-private"
 
-[ "$(tty)" = "/dev/tty1" ] && sway
+[ "$(tty)" = "/dev/tty1" ] && exec dbus-run-session sway
