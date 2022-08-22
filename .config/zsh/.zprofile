@@ -52,5 +52,10 @@ export CLASSPATH="$XDG_DATA_HOME/java"
 
 # Add private environmental vars
 [ -f "${XDG_CONFIG_HOME:-$HOME/.config}/shell/env-private" ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/shell/env-private"
-
+# ENV VAR FOR PLATFORM
+if [ -d "/proc/acpi/button/lid" ]; then
+    export IS_DESKTOP=0
+else
+    export IS_DESKTOP=1
+fi
 [ "$(tty)" = "/dev/tty1" ] && exec dbus-run-session sway
