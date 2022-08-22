@@ -1,0 +1,6 @@
+#!/bin/sh
+if [ $IS_DESKTOP -eq 1 ]; then
+    rsync -av --stats --progress --delete /home/gary /backup/home/desktop
+else 
+    rsync -av --stats --progress --delete /home/gary /backup/home/laptop
+fi
