@@ -26,7 +26,7 @@ for dir in /backup/source/*; do
                     copytags.py "$file" "$dest.opus";
                 fi
                 ;;
-            *) echo "not supported: ${file##*.}" ;;
+            *) echo "not supported: ${file##*.} $file" ;;
         esac
     done
 done
