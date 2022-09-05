@@ -58,7 +58,6 @@ input type:keyboard {
     repeat_rate 40
 }
 exec pipewire
-exec pipewire-media-session
 exec pipewire-pulse
 exec autotiling
 exec /usr/libexec/xdg-desktop-portal-wlr
