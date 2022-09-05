@@ -26,7 +26,7 @@ if test -z "${XDG_RUNTIME_DIR}"; then
      fi
 fi
 # Wayland settings default
-export QT_QPA_PLATFORM=wayland
+export QT_QPA_PLATFORM="wayland;xcb"
 export XDG_SESSION_TYPE=wayland
 export XDG_CURRENT_DESKTOP=sway
 #export SDL_VIDEODRIVER=wayland
