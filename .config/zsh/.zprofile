@@ -27,6 +27,7 @@ if test -z "${XDG_RUNTIME_DIR}"; then
 fi
 # Wayland settings default
 export QT_QPA_PLATFORM="wayland;xcb"
+export QT_QPA_PLATFORMTHEME="gtk2"
 export XDG_SESSION_TYPE=wayland
 export XDG_CURRENT_DESKTOP=sway
 #export SDL_VIDEODRIVER=wayland
@@ -42,6 +43,7 @@ export WGETRC="${XDG_CONFIG_HOME:-$HOME/.config}/wget/wgetrc"
 export INPUTRC="${XDG_CONFIG_HOME:-$HOME/.config}/shell/inputrc"
 export HISTFILE="${XDG_DATA_HOME:-$HOME/.local/share}/history"
 export GNUPGHOME="$XDG_DATA_HOME"/gnupg
+export SQLITE_HISTORY="$XDG_CACHE_HOME"/sqlite_history                     
 
 # Other program settings:
 export FZF_DEFAULT_OPTS="--layout=reverse --height 40%"
@@ -58,4 +60,6 @@ if [ -d "/proc/acpi/button/lid" ]; then
 else
     export IS_DESKTOP=1
 fi
+#linuxbrew
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 [ "$(tty)" = "/dev/tty1" ] && exec dbus-run-session sway
