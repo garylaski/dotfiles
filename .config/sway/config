@@ -2,8 +2,8 @@ set $mod Mod4
 
 output * bg $(find $(xdg-user-dir PICTURES)/wallpapers -type f | shuf -n 1) fill
 
-default_border none
-gaps inner 15
+default_border pixel 3
+gaps inner 10
 floating_modifier $mod normal
 for_window [app_id="menu"] floating enable, resize set 400 200
 for_window [class="REAPER"] layout tabbed
@@ -23,6 +23,7 @@ bindsym XF86AudioMute exec amixer set Master toggle
 
 bindsym $mod+t layout tabbed
 bindsym $mod+s floating toggle
+bindsym $mod+k sticky toggle
 bindsym $mod+f fullscreen
 
 bindsym $mod+1 workspace number 1
@@ -49,7 +50,6 @@ bindsym $mod+Shift+0 move container to workspace number 10
 bindsym $mod+p       exec grimshot save active
 bindsym $mod+Shift+p exec grimshot save area
 bindsym $mod+Mod1+p  exec grimshot save output
-bindsym $mod+Ctrl+p  exec grimshot save window
 
 bindsym $mod+tab workspace back_and_forth
 
@@ -57,8 +57,10 @@ input type:keyboard {
     repeat_delay 200
     repeat_rate 40
 }
-exec pipewire
-exec pipewire-pulse
+input type:pointer {
+    accel_profile "flat"
+    pointer_accel "0"
+}
 exec autotiling
-exec /usr/libexec/xdg-desktop-portal-wlr
-exec /usr/libexec/xdg-desktop-portal-gtk
+exec dbus-update-activation-environment DISPLAY I3SOCK SWAYSOCK WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
+exec /usr/libexe/xdg-desktop-portal -r
