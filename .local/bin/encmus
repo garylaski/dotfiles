@@ -1,4 +1,5 @@
 #!/bin/sh
+pip list | grep taglib || exit 1
 IFS="
 "
 ideallist=""
