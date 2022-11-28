@@ -10,7 +10,7 @@ export PATH="$PATH:$HOME/.local/bin"
 unsetopt PROMPT_SP
 
 # Default programs:
-export SVDIR="$HOME/.local/service"
+export SVDIR="$HOME/service"
 export EDITOR="vim"
 export TERM="foot"
 export BROWSER="browser"
@@ -61,5 +61,6 @@ else
     export IS_DESKTOP=1
 fi
 #linuxbrew
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+#eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+runsvdir -P $SVDIR &
 [ "$(tty)" = "/dev/tty1" ] && exec dbus-run-session sway
