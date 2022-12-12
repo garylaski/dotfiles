@@ -1,3 +1,4 @@
 .config/shell/env-private
 .config/zsh/.zcompdump
 .config/newsboat/urls
+.local/bin/sv/*/supervise
