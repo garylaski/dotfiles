@@ -60,6 +60,12 @@ if [ -d "/proc/acpi/button/lid" ]; then
 else
     export IS_DESKTOP=1
 fi
+
+
+# THEME
+export GTK_THEME="Everforest-Dark-B-LB";
+#export XCURSOR_THEME="Sanae";
+
 #linuxbrew
 #eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 runsvdir -P $SVDIR &

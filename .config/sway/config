@@ -1,9 +1,10 @@
 set $mod Mod4
 
 output * bg $(find $(xdg-user-dir PICTURES)/wallpapers -type f | shuf -n 1) fill
-
-default_border pixel 3
-gaps inner 10
+# Theres no way to read from ENV
+#seat seat0 xcursor_theme Sanae 24
+default_border none
+gaps inner 5
 floating_modifier $mod normal
 for_window [app_id="menu"] floating enable, resize set 400 200
 for_window [class="REAPER"] layout tabbed
