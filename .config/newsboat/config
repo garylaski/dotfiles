@@ -1,1 +1,2 @@
 auto-reload yes
+browser "$BROWSER %u > /dev/null 2>&1"
