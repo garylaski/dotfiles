@@ -30,6 +30,7 @@ export QT_QPA_PLATFORM="wayland;xcb"
 export QT_QPA_PLATFORMTHEME="gtk2"
 export XDG_SESSION_TYPE=wayland
 export XDG_CURRENT_DESKTOP=sway
+#export DISPLAY=:0
 #export SDL_VIDEODRIVER=wayland
 
 # ~/ Clean-up:
