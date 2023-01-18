@@ -30,8 +30,6 @@ export QT_QPA_PLATFORM="wayland;xcb"
 export QT_QPA_PLATFORMTHEME="gtk2"
 export XDG_SESSION_TYPE=wayland
 export XDG_CURRENT_DESKTOP=sway
-#export DISPLAY=:0
-#export SDL_VIDEODRIVER=wayland
 
 # ~/ Clean-up:
 export XDG_CONFIG_HOME="$HOME/.config"
@@ -45,6 +43,7 @@ export INPUTRC="${XDG_CONFIG_HOME:-$HOME/.config}/shell/inputrc"
 export HISTFILE="${XDG_DATA_HOME:-$HOME/.local/share}/history"
 export GNUPGHOME="$XDG_DATA_HOME"/gnupg
 export SQLITE_HISTORY="$XDG_CACHE_HOME"/sqlite_history                     
+export GOPATH="$XDG_DATA_HOME"/go
 
 # Other program settings:
 export FZF_DEFAULT_OPTS="--layout=reverse --height 40%"
@@ -65,9 +64,5 @@ fi
 
 # THEME
 export GTK_THEME="Everforest-Dark-B-LB";
-#export XCURSOR_THEME="Sanae";
 
-#linuxbrew
-#eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-runsvdir -P $SVDIR &
 [ "$(tty)" = "/dev/tty1" ] && exec dbus-run-session sway
