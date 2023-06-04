@@ -1,9 +1,4 @@
 set $mod Mod4
-set $system_theme "Everforest-Dark-B-LB"
-set $system_icons "Everforest-Dark-B-LB"
-set $cursor_theme "Hackneyed-Dark"
-set $cursor_size 24
-
 
 output * bg $(find $(xdg-user-dir PICTURES)/wallpapers -type f | shuf -n 1) fill
 default_border none
@@ -19,11 +14,6 @@ bindsym $mod+b exec $BROWSER
 bindsym $mod+Return exec $TERM
 bindsym $mod+Space exec $LAUNCHER
 bindsym $mod+w exec swaymsg output \* bg $(find $(xdg-user-dir PICTURES)/wallpapers -type f | shuf -n 1) fill
-
-bindsym XF86AudioRaiseVolume exec pactl set-sink-volume 0 +1%
-bindsym XF86AudioLowerVolume exec pactl set-sink-volume 0 -1%
-bindsym XF86AudioMute exec pactl set-sink-mute 0 toggle
-
 
 bindsym $mod+t layout tabbed
 bindsym $mod+s floating toggle
@@ -66,12 +56,4 @@ input type:pointer {
     pointer_accel "0"
 }
 
-set $gnome-schema org.gnome.desktop.interface
-exec_always {
-  gsettings set $gnome-schema gtk-theme $system_theme
-  gsettings set $gnome-schema icon-theme $system_icons
-  gsettings set $gnome-schema cursor-theme $cursor_theme
-  gsettings set $gnome-schema cursor-size $cursor_size
-}
-seat seat0 xcursor_theme $cursor_theme $cursor_size
 exec autotiling
