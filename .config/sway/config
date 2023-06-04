@@ -1,8 +1,11 @@
 set $mod Mod4
+set $system_theme "Everforest-Dark-B-LB"
+set $system_icons "Everforest-Dark-B-LB"
+set $cursor_theme "Hackneyed-Dark"
+set $cursor_size 24
+
 
 output * bg $(find $(xdg-user-dir PICTURES)/wallpapers -type f | shuf -n 1) fill
-# Theres no way to read from ENV
-#seat seat0 xcursor_theme Sanae 24
 default_border none
 gaps inner 5
 floating_modifier $mod normal
@@ -62,10 +65,13 @@ input type:pointer {
     accel_profile "flat"
     pointer_accel "0"
 }
-exec autotiling
-exec dbus-update-activation-environment DISPLAY I3SOCK SWAYSOCK WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
-exec /usr/libexec/xdg-desktop-portal-wlr
-exec /usr/libexec/xdg-desktop-portal-gtk
-exec pipewire-pulse
-exec pipewire
 
+set $gnome-schema org.gnome.desktop.interface
+exec_always {
+  gsettings set $gnome-schema gtk-theme $system_theme
+  gsettings set $gnome-schema icon-theme $system_icons
+  gsettings set $gnome-schema cursor-theme $cursor_theme
+  gsettings set $gnome-schema cursor-size $cursor_size
+}
+seat seat0 xcursor_theme $cursor_theme $cursor_size
+exec autotiling
