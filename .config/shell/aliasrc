@@ -11,7 +11,8 @@ alias \
 	bc="bc -ql" \
 	ffmpeg="ffmpeg -hide_banner" \
     gap="git add --patch" \
-    gc="git commit"
+    gc="git commit" \
+    gs="git status"
 
 # Colorize commands when possible.
 alias \
