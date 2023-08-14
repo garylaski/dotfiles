@@ -1,2 +1,4 @@
 # dotfiles
-## `.local/bin/`
+```sh
+./.local/bin/linkdotfiles
+```

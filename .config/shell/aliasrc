@@ -1,9 +1,7 @@
 #!/bin/sh
 
-# Use neovim for vim if present.
 [ -x "$(command -v nvim)" ] && alias vim="nvim" vimdiff="nvim -d"
 
-# Verbosity and settings that you pretty much just always are going to want.
 alias \
 	cp="cp -iv" \
 	mv="mv -iv" \
@@ -12,10 +10,12 @@ alias \
 	ffmpeg="ffmpeg -hide_banner" \
     gap="git add --patch" \
     gc="git commit" \
-    gs="git status"
+    gs="git status" \
 
-# Colorize commands when possible.
 alias \
 	ls="ls -a -hN --color=auto --group-directories-first" \
+    ll="ls -l" \
 	grep="grep --color=auto" \
 	diff="diff --color=auto" \
+
+mkcd() { mkdir -p "$@" && cd "$@"; }
