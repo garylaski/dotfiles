@@ -1,0 +1,5 @@
+#!/bin/sh
+git config --global user.name $GIT_USERNAME
+git config --global user.email $GIT_EMAIL
+git config --global user.signingkey $GIT_SIGNINGKEY
+git config --global commit.gpgsign true

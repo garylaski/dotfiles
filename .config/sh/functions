@@ -1,0 +1,14 @@
+#!/bin/sh
+
+function backup() {
+    if [ $IS_DESKTOP -eq 1 ]; then
+        rsync -av --stats --progress --exclude 'dls' --exclude '.local/share' --exclude '.var' --exclude '.cache' --exclude '.config/chromium' --delete /home/gary /backup/home/desktop
+    else 
+        rsync -av --stats --progress --delete /home/gary /backup/home/laptop
+    fi
+}
+
+function bat() {
+    cat /sys/class/power_supply/BAT0/capacity
+    cat /sys/class/power_supply/BAT0/status
+}

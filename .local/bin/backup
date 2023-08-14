@@ -1,6 +1,0 @@
-#!/bin/sh
-if [ $IS_DESKTOP -eq 1 ]; then
-    rsync -av --stats --progress --exclude 'dls' --exclude '.local/share' --exclude '.var' --exclude '.cache' --exclude '.config/chromium' --delete /home/gary /backup/home/desktop
-else 
-    rsync -av --stats --progress --delete /home/gary /backup/home/laptop
-fi
