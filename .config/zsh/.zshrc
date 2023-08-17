@@ -19,4 +19,5 @@ _comp_options+=(globdots)
 
 source "$HOME/.config/sh/aliases"
 source "$HOME/.config/sh/functions"
+export GPG_TTY=$(tty)
 
