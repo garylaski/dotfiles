@@ -1,5 +1,4 @@
-.config/shell/env-private
 .config/zsh/.zcompdump
-.config/newsboat/urls
-.config/gtk-2.0/gtkfilechooser.ini
-.local/bin/sv/*/supervise
+.config/git/config
+.config/nvim/lazy-lock.json
+.config/sh/profile-private
