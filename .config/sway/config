@@ -45,6 +45,14 @@ bindsym $mod+p       exec grimshot save active
 bindsym $mod+Shift+p exec grimshot save area
 bindsym $mod+Mod1+p  exec grimshot save output
 
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
+bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioStop exec playerctl stop
+
 bindsym $mod+tab workspace back_and_forth
 
 input type:keyboard {
@@ -57,3 +65,5 @@ input type:pointer {
 }
 
 exec autotiling
+exec pipewire
+exec pipewire-pulse
