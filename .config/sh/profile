@@ -28,8 +28,8 @@ export PATH="$PATH:$HOME/.local/share/yabridge"
 export EDITOR="vim"
 export TERM="foot"
 export BROWSER="firefox-wayland"
-export LAUNCHER="foot --window-size-pixels=400x200 -a=menu menu"
-export TZ='America/Los_Angeles'
+export LAUNCHER="foot --window-size-pixels=400x200 --app-id=menu menu"
+export TZ='America/New_York'
 
 export NPM_CONFIG_USERCONFIG=$XDG_CONFIG_HOME/npm/npmrc
 export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc"

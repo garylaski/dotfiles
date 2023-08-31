@@ -1,5 +1,5 @@
 #!/bin/sh
-if [ $(pgrep fzf) ]; 
+if [ -n "$(swaymsg -t get_tree | grep menu)" ]; 
 then 
 	pkill fzf
 	return 1

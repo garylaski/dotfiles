@@ -17,7 +17,7 @@ for dir in /backup/source/*; do
                 ideallist=$ideallist"$dest.jpg
 ";
                 [ -f "$dest.jpg" ] || ffmpeg -v quiet -stats -i "$file" -vf "scale='min(iw, 500):-1'" "$dest.jpg";;
-            opus | mp3 | flac | m4a) 
+            opus | mp3 | flac)
                 ideallist=$ideallist"$dest.opus
 ";
                 if [ -f "$dest.opus" ]; then

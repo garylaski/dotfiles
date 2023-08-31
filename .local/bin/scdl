@@ -1,2 +1,2 @@
 #!/bin/sh
-youtube-dl -o "%(title)s.m4a" -x --audio-format aac --postprocessor-args '-acodec copy' --add-header "Authorization:OAuth $SOUNDCLOUD_OAUTH" $1
+yt-dlp --add-header "Authorization: OAuth $SOUNDCLOUD_OAUTH" $1

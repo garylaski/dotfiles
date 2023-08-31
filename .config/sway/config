@@ -6,6 +6,7 @@ gaps inner 5
 floating_modifier $mod normal
 for_window [app_id="menu"] floating enable, resize set 400 200
 for_window [class="REAPER"] layout tabbed
+for_window [app_id="Firefox" title="Picture-in-Picture"] floating enable, resize set 480 270, move position 1440 0, sticky enable
 bindsym $mod+Shift+c reload
 bindsym $mod+Shift+q exit
 bindsym $mod+c kill
@@ -19,6 +20,10 @@ bindsym $mod+t layout tabbed
 bindsym $mod+s floating toggle
 bindsym $mod+k sticky toggle
 bindsym $mod+f fullscreen
+
+bindsym $mod+p       exec grimshot save active
+bindsym $mod+Shift+p exec grimshot save area
+bindsym $mod+Mod1+p  exec grimshot save output
 
 bindsym $mod+1 workspace number 1
 bindsym $mod+2 workspace number 2
@@ -41,10 +46,6 @@ bindsym $mod+Shift+8 move container to workspace number 8
 bindsym $mod+Shift+9 move container to workspace number 9
 bindsym $mod+Shift+0 move container to workspace number 10
 
-bindsym $mod+p       exec grimshot save active
-bindsym $mod+Shift+p exec grimshot save area
-bindsym $mod+Mod1+p  exec grimshot save output
-
 bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
 bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
 bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
@@ -57,13 +58,13 @@ bindsym $mod+tab workspace back_and_forth
 
 input type:keyboard {
     repeat_delay 200
-    repeat_rate 40
+        repeat_rate 40
 }
 input type:pointer {
     accel_profile "flat"
-    pointer_accel "0"
+        pointer_accel "0"
 }
-
-exec autotiling
 exec pipewire
 exec pipewire-pulse
+exec dbus-update-activation-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP XDG_SESSION_DESKTOP XDG_SESSION_TYPE
+output DP-1 mode --custom 1920x1080@144Hz adaptive_sync on
