@@ -1,6 +1,6 @@
 require("mason").setup()
 require("mason-lspconfig").setup({
-	ensure_installed = { "lua_ls", "gopls", "quick_lint_js", "cssls", "html" }
+	ensure_installed = { "lua_ls", "gopls", "quick_lint_js", "cssls", "html", "pyright" },
 })
 
 require("lspconfig").lua_ls.setup {
@@ -16,3 +16,4 @@ require("lspconfig").gopls.setup {}
 require("lspconfig").quick_lint_js.setup {}
 require("lspconfig").cssls.setup {}
 require("lspconfig").html.setup {}
+require("lspconfig").pyright.setup {}

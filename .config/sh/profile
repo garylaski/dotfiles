@@ -29,9 +29,13 @@ export EDITOR="vim"
 export TERM="foot"
 export BROWSER="firefox-wayland"
 export LAUNCHER="foot --window-size-pixels=400x200 --app-id=menu menu"
-export TZ='America/New_York'
+export TZ='America/Los_Angeles'
 
-export NPM_CONFIG_USERCONFIG=$XDG_CONFIG_HOME/npm/npmrc
+# XDG CLEANUP
+export PYTHONSTARTUP="/etc/python/pythonrc"
+export JUPYTER_CONFIG_DIR="$XDG_CONFIG_HOME/jupyter"
+export IPYTHONDIR="$XDG_CONFIG_HOME/ipython"
+export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
 export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc"
 export LESSHISTFILE="-"
 export WGETRC="$XDG_CONFIG_HOME/wget/wgetrc"
@@ -61,3 +65,5 @@ fi
 export GTK_THEME=Adwaita:dark
 export GTK2_RC_FILES=/usr/share/themes/Adwaita-dark/gtk-2.0/gtkrc
 export QT_STYLE_OVERRIDE=adwaita-dark
+# ghidra fix
+export _JAVA_AWT_WM_NONREPARENTING=1

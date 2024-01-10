@@ -15,4 +15,7 @@ if len(origin.unsupported) > 0:
             dest.tags['ALBUMARTISTS'] = origin.tags['ALBUMARTIST']
         elif tag == "----:com.apple.iTunes:originalyear":
             dest.tags['ORIGINALYEAR'] = origin.tags['DATE'][0][:4]
+        else:
+            print("Unsupported tag: " + tag)
+origin.close()
 dest.save()
