@@ -16,9 +16,11 @@ local plugins = {
      "williamboman/mason-lspconfig.nvim",
      "neovim/nvim-lspconfig",
      "ellisonleao/gruvbox.nvim",
+     "vimwiki/vimwiki",
 }
 vim.opt.rtp:prepend(lazypath)
 require("lazy").setup(plugins)
 require("plugins/treesitter")
 require("plugins/lsp")
 require("plugins/gruvbox")
+require("plugins/copilot")
