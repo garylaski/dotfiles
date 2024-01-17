@@ -1,0 +1,4 @@
+#!/bin/sh
+sudo wpa_cli list_networks
+printf "Select Network by ID: " && read ID
+sudo wpa_cli select_network $ID
