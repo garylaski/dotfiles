@@ -17,5 +17,6 @@ alias \
     ll="ls -l" \
 	grep="grep --color=auto" \
 	diff="diff --color=auto" \
+    vw="nvim -c 'VimwikiIndex'" \
 
 mkcd() { mkdir -p "$@" && cd "$@"; }
