@@ -23,6 +23,7 @@ $XDG_CONFIG_HOME/sh/commands > /dev/null 2>&1
 
 # PATH
 export PATH="$PATH:$HOME/.local/bin"
+export PATH="$PATH:$HOME/.local/bin/games"
 export PATH="$PATH:$HOME/.local/share/yabridge"
 
 export EDITOR="vim"
