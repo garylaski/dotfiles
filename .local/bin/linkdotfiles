@@ -1,5 +1,6 @@
 #!/bin/sh
 mkdir -p ~/.config
+ln -s $HOME/repos/dotfiles/.zshenv $HOME/
 
 if [ -e $HOME/.local/bin ]; then
 	if [ -h $HOME/.local/bin ]; then
@@ -8,6 +9,7 @@ if [ -e $HOME/.local/bin ]; then
 		echo "~/.local/bin exists and is not a symlink"
 	fi
 else
+    mkdir -p ~/.local/
 	echo "linking ~/.local/bin -> ~/repos/dotfiles/local/bin"
 	ln -s $HOME/repos/dotfiles/.local/bin $HOME/.local/
 fi
