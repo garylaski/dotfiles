@@ -3,7 +3,7 @@ This repository aims to streamline the process of setting up a new development e
 
 
 ## Installation
-```zsh
+```sh
 mkdir $HOME/repos
 cd $HOME/repos
 sudo xbps-install git
@@ -12,5 +12,11 @@ cd dotfiles
 ./.local/bin/linkdotfiles
 firstsetup
 ```
+
+## Todo
+- [ ] Github config with ssh/gpg
+- [ ] Firefox config
+- [ ] Replace `linkdotfiles` with `stow`
+- [ ] Increased agnosticism
 
 
