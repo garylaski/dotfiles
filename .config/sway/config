@@ -1,10 +1,15 @@
 set $mod Mod4
 
 output * bg $(find $(xdg-user-dir PICTURES)/wallpapers -type f | shuf -n 1) fill
+output * adaptive_sync on
+
 default_border none
 gaps inner 5
+smart_gaps on
 floating_modifier $mod normal
 for_window [app_id="menu"] floating enable, resize set 400 200
+for_window [class="REAPER"] layout tabbed
+for_window [title="Picture-in-Picture"] floating enable, sticky enable
 bindsym $mod+Shift+c reload
 bindsym $mod+Shift+q exit
 bindsym $mod+c kill

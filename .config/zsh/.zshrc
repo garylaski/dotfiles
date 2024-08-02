@@ -1,6 +1,6 @@
 # Enable colors and change prompt:
 autoload -U colors && colors
-PS1="%B[%n@%M %{$fg[blue]%}%~%{$reset_color%}]$%b "
+PS1="%B%{$fg[green]%}%~%{$reset_color%} $%b "
 setopt autocd
 unsetopt PROMPT_SP
 stty stop undef
@@ -20,4 +20,5 @@ _comp_options+=(globdots)
 source "$HOME/.config/sh/aliases"
 source "$HOME/.config/sh/functions"
 export GPG_TTY=$(tty)
-
+# search
+bindkey '^R' history-incremental-search-backward

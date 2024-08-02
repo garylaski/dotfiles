@@ -14,8 +14,18 @@ for i = 1, 9 do
    vim.keymap.set('n', '<leader>' ..key, key.. 'gt<CR>')
 end
 vim.keymap.set('n', '<leader>w', '<cmd>lua vim.diagnostic.open_float()<CR>')
-vim.keymap.set('n', '<CR>', '<cmd>lua vim.lsp.buf.definition()<CR>')
 vim.keymap.set('n', '<BS>', '<C-o>')
 vim.keymap.set('n', '\\', '<C-i>')
 vim.keymap.set('n', '.', '<cmd>lua vim.diagnostic.goto_next()<CR>')
 vim.keymap.set('n', ',', '<cmd>lua vim.diagnostic.goto_prev()<CR>')
+
+function UpdateAll ()
+    require('lazy').sync({show = false})
+    require('mason-registry').update()
+    vim.cmd('TSUpdate')
+end
+
+vim.keymap.set('n', '<leader>u', UpdateAll)
+vim.keymap.set('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>')
+vim.keymap.set('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>')
+vim.keymap.set('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>')

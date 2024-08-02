@@ -13,11 +13,13 @@ alias \
     gs="git status" \
 
 alias \
-	ls="ls -a -hN --color=auto --group-directories-first" \
-    ll="ls -l" \
+	ls="ls -A -hN --color=auto" \
+    ll="ls -lt" \
 	grep="grep --color=auto" \
 	diff="diff --color=auto" \
     vw="nvim -c 'VimwikiIndex'" \
     shutdown="sudo shutdown -h now"
+
+alias wget=wget --hsts-file="$XDG_DATA_HOME/wget-hsts"
 
 mkcd() { mkdir -p "$@" && cd "$@"; }

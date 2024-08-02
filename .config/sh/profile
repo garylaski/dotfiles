@@ -24,12 +24,13 @@ $XDG_CONFIG_HOME/sh/commands > /dev/null 2>&1
 # PATH
 export PATH="$PATH:$HOME/.local/bin"
 export PATH="$PATH:$HOME/.local/share/yabridge"
+export PATH="$PATH:$HOME/.local/share/npm/bin"
 
 export EDITOR="vim"
 export TERM="foot"
 export BROWSER="firefox-wayland"
 export LAUNCHER="foot --window-size-pixels=400x200 --app-id=menu menu"
-export TZ='America/Los_Angeles'
+export TZ='EST5EDT'
 
 # XDG CLEANUP
 export PYTHONSTARTUP="/etc/python/pythonrc"
