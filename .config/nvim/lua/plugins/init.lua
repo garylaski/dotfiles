@@ -16,6 +16,7 @@ local plugins = {
      "neovim/nvim-lspconfig",
      "ellisonleao/gruvbox.nvim",
      "hrsh7th/cmp-nvim-lsp",
+     "hrsh7th/cmp-vsnip",
      "hrsh7th/nvim-cmp",
      "github/copilot.vim",
      "nvim-java/nvim-java",
