@@ -1,8 +1,8 @@
 #!/bin/sh
-if [ -n "$(swaymsg -t get_tree | grep menu)" ]; 
+pid=$(swaymsg -t get_tree | jq '.nodes[].nodes[].floating_nodes[] | select(.app_id=="menu").pid')
+if [ -n "$pid" ]; 
 then 
-	pkill fzf
-	return 1
+	kill -9 $pid
 else
 	IFS=':'
 	for p in $PATH; do
