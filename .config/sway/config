@@ -17,6 +17,7 @@ bindsym $mod+c kill
 bindsym $mod+b exec exec $BROWSER
 bindsym $mod+Return exec exec $TERM
 bindsym $mod+Space exec exec $LAUNCHER
+bindsym $mod+n exec exec obsidian
 bindsym $mod+w exec swaymsg output \* bg $(find $(xdg-user-dir PICTURES)/wallpapers -type f | shuf -n 1) fill
 
 bindsym $mod+t layout tabbed
@@ -70,5 +71,4 @@ input type:pointer {
 exec exec pipewire
 exec exec pipewire-pulse
 exec dbus-update-activation-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP XDG_SESSION_DESKTOP XDG_SESSION_TYPE
-xwayland disable
 output DP-1 mode --custom 1920x1080@144Hz adaptive_sync on

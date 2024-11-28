@@ -1,5 +1,6 @@
 #!/bin/sh
 . packages.sh
+sudo xbps-install -Syu
 sudo xbps-install -Su $(optional_packages)
 
 flatpak --user remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
