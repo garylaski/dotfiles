@@ -18,14 +18,10 @@ local plugins = {
      "hrsh7th/cmp-nvim-lsp",
      "hrsh7th/cmp-vsnip",
      "hrsh7th/nvim-cmp",
-     "github/copilot.vim",
-     "nvim-java/nvim-java",
 }
 vim.opt.rtp:prepend(lazypath)
 require("lazy").setup(plugins)
-require("java").setup()
 require("plugins/treesitter")
 require("plugins/cmp")
 require("plugins/lsp")
 require("plugins/gruvbox")
-require("plugins/copilot")

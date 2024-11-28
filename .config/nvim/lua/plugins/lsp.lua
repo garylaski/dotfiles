@@ -1,6 +1,6 @@
 require("mason").setup()
 require("mason-lspconfig").setup({
-	ensure_installed = { "lua_ls", "gopls", "quick_lint_js", "cssls", "pyright", "rust_analyzer" },
+	ensure_installed = { "lua_ls", "quick_lint_js", "cssls", "pyright", "rust_analyzer" },
 })
 
 require("lspconfig").lua_ls.setup {
@@ -46,4 +46,3 @@ require("lspconfig").rust_analyzer.setup {
         },
     },
 }
-require("lspconfig").jdtls.setup({})
