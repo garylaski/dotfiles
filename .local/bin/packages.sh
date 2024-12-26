@@ -1,9 +1,13 @@
 #!/bin/sh
 
 base_packages() {
-    base="base-system cryptsetup grub-x86_64-efi lvm2"
-    video="mesa-dri mesa-vaapi mesa-vdpau mesa-vulkan-radeon"
-    de="sway seatd dbus neovim 7zip unzip curl wget gzip foot firefox zsh jq fzf"
+    base="base-system cryptsetup grub-x86_64-efi grub lvm2"
+    if [ $IS_DESKTOP = 0 ]; then
+        video="mesa-dri intel-video-accel vulkan-loader mesa-vulkan-intel"
+    else
+        video="mesa-dri mesa-vaapi mesa-vdpau mesa-vulkan-radeon"
+    fi
+    de="sway seatd dbus nodejs neovim 7zip unzip curl wget gzip foot firefox zsh jq fzf"
     fonts="noto-fonts-ttf noto-fonts-cjk noto-fonts-emoji noto-fonts-ttf-extra"
     dev="git base-devel gnupg"
     audio="pipewire alsa-pipewire"
@@ -23,7 +27,7 @@ optional_packages() {
 
 flatpak_packages() {
     obsidian="md.obsidian.Obsidian" 
-    bottles="com.usebottles.bottles org.freedesktop.Platform.VulkanLayer.gamescope org.freedesktop.Platform.VulkanLayer.vkBasalt "
+    bottles="com.usebottles.bottles org.freedesktop.Platform.VulkanLayer.gamescope//24.08 org.freedesktop.Platform.VulkanLayer.vkBasalt//stable "
     steam="com.valvesoftware.Steam"
     printf " $obsidian $bottles $steam "
 }
