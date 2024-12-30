@@ -1,7 +1,7 @@
 #!/bin/sh
-pid=$(swaymsg -t get_tree | jq '.nodes[].nodes[].floating_nodes[] | select(.app_id=="menu").pid')
-if [ -n "$pid" ]; 
-then 
+pid=$(swaymsg -t get_tree | jq '.nodes[].nodes[].floating_nodes[] | select(.app_id=="menu.menu").pid')
+pid2=$(pgrep fzf)
+if [ -n "$pid" ] && [ -n "$pid2" ]; then
 	kill -9 $pid
 else
 	IFS=':'

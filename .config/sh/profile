@@ -25,9 +25,9 @@ $XDG_CONFIG_HOME/sh/commands > /dev/null 2>&1
 export PATH="$PATH:$HOME/.local/bin"
 
 export EDITOR="vim"
-export TERM="foot"
+export TERM="ghostty"
 export BROWSER="firefox-wayland"
-export LAUNCHER="foot --window-size-pixels=400x200 --app-id=menu menu"
+export LAUNCHER='ghostty --window-height=200 --window-width=400 --window-decoration=false --class=menu.menu  -e zsh -ic menu'
 export TZ='EST5EDT'
 
 # XDG CLEANUP
