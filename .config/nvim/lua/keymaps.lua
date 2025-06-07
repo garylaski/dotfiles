@@ -1,5 +1,5 @@
 vim.g.mapleader = ' '
-vim.keymap.set('n', '<leader>e', '<cmd>Explore<CR>')
+vim.keymap.set('n', '<leader>e', '<cmd>Explore %:p:h<CR>')
 vim.keymap.set('n', '<leader>n', '<cmd>tabnew<CR>')
 vim.keymap.set({'n', 'i', 'v'}, '<up>', '<nop>')
 vim.keymap.set({'n', 'i', 'v'}, '<down>', '<nop>')
@@ -18,14 +18,6 @@ vim.keymap.set('n', '<BS>', '<C-o>')
 vim.keymap.set('n', '\\', '<C-i>')
 vim.keymap.set('n', '.', '<cmd>lua vim.diagnostic.goto_next()<CR>')
 vim.keymap.set('n', ',', '<cmd>lua vim.diagnostic.goto_prev()<CR>')
-
-function UpdateAll ()
-    require('lazy').sync({show = false})
-    require('mason-registry').update()
-    vim.cmd('TSUpdate')
-end
-
-vim.keymap.set('n', '<leader>u', UpdateAll)
 vim.keymap.set('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>')
 vim.keymap.set('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>')
 vim.keymap.set('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>')

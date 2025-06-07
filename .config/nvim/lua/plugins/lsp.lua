@@ -1,8 +1,7 @@
 require("mason").setup()
 require("mason-lspconfig").setup({
-	ensure_installed = { "lua_ls", "quick_lint_js", "cssls", "pyright", "rust_analyzer" },
+	ensure_installed = { "lua_ls", "quick_lint_js", "pyright", "rust_analyzer" },
 })
-
 require("lspconfig").lua_ls.setup {
     settings = {
         Lua = {
@@ -33,8 +32,8 @@ require("lspconfig").gopls.setup {
     staticcheck = true,
 }
 require("lspconfig").quick_lint_js.setup {}
+require("lspconfig").ts_ls.setup {}
 require("lspconfig").cssls.setup {}
-require("lspconfig").html.setup {}
 require("lspconfig").pyright.setup {}
 require("lspconfig").rust_analyzer.setup {
     settings = {
