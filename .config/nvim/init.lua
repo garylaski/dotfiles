@@ -1,9 +1,5 @@
 -- Theme
-vim.cmd.colorscheme("gruvbox")
-vim.opt.termguicolors = true
-vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-vim.api.nvim_set_hl(0, "NormalNC", { bg = "none" })
-vim.api.nvim_set_hl(0, "EndOfBuffer", { bg = "none" })
+vim.cmd.colorscheme("theme")
 
 -- Opts
 vim.opt.number = true
@@ -14,6 +10,8 @@ vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
 vim.opt.smartindent = true
 vim.opt.signcolumn = 'yes'
+vim.g.c_no_curly_error=1
+vim.opt.guicursor = ""
 
 -- Undo
 vim.opt.swapfile = false
@@ -25,6 +23,9 @@ vim.g.netrw_keepdir = 0
 
 -- Keymaps
 vim.g.mapleader = ' '
+vim.keymap.set('n', '<leader>m', '<cmd>:make<CR>')
+vim.keymap.set('n', 'cn', '<cmd>:cnext<CR>')
+vim.keymap.set('n', 'cb', '<cmd>:cprevious<CR>')
 vim.keymap.set('n', '<leader>e', '<cmd>Explore %:p:h<CR>')
 vim.keymap.set('n', '<leader>ff', ':find ')
 vim.keymap.set('n', '<leader>n', '<cmd>tabnew<CR>')
@@ -113,7 +114,8 @@ LSPS = {
     rust_analyzer = {
         settings = {
             ["rust-analyzer"] = {
-                checkOnSave = {
+                checkOnSave = true,
+                check = {
                     command = "clippy",
                     extraArgs = { "--no-deps" },
                 },
