@@ -7,9 +7,9 @@ base_packages() {
     else
         video="mesa-dri mesa-vaapi mesa-vdpau mesa-vulkan-radeon"
     fi
-    de="xtools sway seatd dbus nodejs neovim 7zip unzip curl wget gzip ghostty firefox zsh jq fzf htop zenity"
+    de="xtools sway seatd dbus nodejs neovim 7zip unzip curl wget gzip foot firefox zsh jq fzf htop zenity"
     fonts="noto-fonts-ttf noto-fonts-cjk noto-fonts-emoji noto-fonts-ttf-extra"
-    dev="git base-devel gnupg python3-pip"
+    dev="git gdb base-devel gnupg python3-pip"
     audio="pipewire alsa-pipewire"
     xdg="xdg-user-dirs xdg-utils xdg-desktop-portal xdg-desktop-portal-wlr xdg-desktop-portal-gtk"
     printf " $base $video $de $fonts $dev $audio $xdg "
@@ -17,13 +17,12 @@ base_packages() {
 
 optional_packages() {
     xdg_ninja="glow"
-    rust_dev="cargo openssl-devel"
-    java="openjdk21 openjdk21-jre"
     flatpak="flatpak"
     screenshot="grimshot"
     image_edit="gimp"
-    media_utils="picard ffmpeg qbittorrent mpv"
-    printf " $java $xdg_ninja $rust_dev $flatpak $screenshot $image_edit $media_utils "
+    media_utils="picard ffmpeg mpv"
+    lsp="black lua-language-server pyright cargo rust-analyzer"
+    printf " $xdg_ninja $flatpak $screenshot $image_edit $media_utils $lsp "
 }
 
 flatpak_packages() {
