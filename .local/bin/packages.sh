@@ -7,7 +7,7 @@ base_packages() {
     else
         video="mesa-dri mesa-vaapi mesa-vdpau mesa-vulkan-radeon"
     fi
-    de="xtools sway seatd dbus nodejs neovim 7zip unzip curl wget gzip alacritty firefox zsh jq fzf htop zenity"
+    de="xtools sway seatd dbus nodejs neovim 7zip unzip curl wget gzip alacritty firefox zsh jq fzf htop zenity ripgrep"
     fonts="noto-fonts-ttf noto-fonts-cjk noto-fonts-emoji noto-fonts-ttf-extra"
     dev="git gdb base-devel gnupg python3-pip cloc"
     audio="pipewire alsa-pipewire"

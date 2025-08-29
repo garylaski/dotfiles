@@ -12,11 +12,12 @@ alias \
     gap="git add --patch" \
     gc="git commit" \
     gs="git status" \
+    gp="git push" \
 
 alias \
 	ls="ls -A -hN --color=auto" \
     ll="ls -lt" \
-	grep="grep --color=auto" \
+	grep="rg" \
 	diff="vim -d" \
     shutdown="sudo shutdown -h now"
 
