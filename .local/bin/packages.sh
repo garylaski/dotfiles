@@ -9,7 +9,7 @@ base_packages() {
     fi
     de="xtools sway seatd dbus nodejs neovim 7zip unzip curl wget gzip foot firefox zsh jq fzf htop zenity"
     fonts="noto-fonts-ttf noto-fonts-cjk noto-fonts-emoji noto-fonts-ttf-extra"
-    dev="git gdb base-devel gnupg python3-pip"
+    dev="git gdb base-devel gnupg python3-pip cloc"
     audio="pipewire alsa-pipewire"
     xdg="xdg-user-dirs xdg-utils xdg-desktop-portal xdg-desktop-portal-wlr xdg-desktop-portal-gtk"
     printf " $base $video $de $fonts $dev $audio $xdg "
