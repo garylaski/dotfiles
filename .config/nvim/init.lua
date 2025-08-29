@@ -1,7 +1,18 @@
 -- Theme
-vim.cmd.colorscheme("theme")
+vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
+    callback = function()
+        local ft = vim.bo.filetype
+        if ft == "python" then
+            vim.cmd.colorscheme("gruvbox")
+        else
+            vim.cmd.colorscheme("default")
+            vim.cmd.colorscheme("theme")
+        end
+    end,
+})
 
 -- Opts
+vim.opt.clipboard = "unnamedplus"
 vim.opt.number = true
 vim.opt.wrap = false
 vim.opt.tabstop = 4
@@ -28,6 +39,7 @@ vim.keymap.set('n', 'cn', '<cmd>:cnext<CR>')
 vim.keymap.set('n', 'cb', '<cmd>:cprevious<CR>')
 vim.keymap.set('n', '<leader>e', '<cmd>Explore %:p:h<CR>')
 vim.keymap.set('n', '<leader>ff', ':find ')
+vim.keymap.set('n', '<leader>i', ':Inspect<CR>')
 vim.keymap.set('n', '<leader>n', '<cmd>tabnew<CR>')
 vim.keymap.set('n', '<leader>]', '<cmd>tabnext<CR>')
 vim.keymap.set('n', '<leader>[', '<cmd>tabprevious<CR>')

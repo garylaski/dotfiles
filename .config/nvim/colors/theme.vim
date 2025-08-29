@@ -2,6 +2,7 @@ let g:colors_name='theme'
 " foreground
 let fg_tan    = ' guifg=#d2b48c'
 let fg_yellow = ' guifg=#ffff00'
+let fg_orange = ' guifg=#ffff00'
 let fg_gray80 = ' guifg=#bbbbbb'
 let fg_red    = ' guifg=#cd5c5c'
 let fg_green  = ' guifg=#98fb98'
@@ -32,10 +33,10 @@ hi! link Operator     Normal
 hi! link Identifier   Normal
 hi! link PreProc      Normal
 hi! link Macro        Normal
+hi! link Function     Normal
 hi! link Constant     Type
 hi! link Title        Type
 hi! link Directory    Type
-hi! link Function     Type
 hi! link Character    String
 hi! link ErrorMsg     Error
 hi! link SpecialKey   Comment
