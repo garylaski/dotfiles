@@ -25,9 +25,9 @@ $XDG_CONFIG_HOME/sh/commands > /dev/null 2>&1
 export PATH="$PATH:$HOME/.local/bin"
 
 export EDITOR="vim"
-export TERM="foot"
+export TERM="alacritty"
 export BROWSER="firefox-wayland"
-export LAUNCHER='foot --window-size-pixels=400x200 --app-id=menu menu'
+export LAUNCHER='alacritty --class menu -e menu'
 export TZ='EST5EDT'
 
 # XDG CLEANUP
