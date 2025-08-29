@@ -21,7 +21,7 @@ optional_packages() {
     screenshot="grimshot"
     image_edit="gimp"
     media_utils="picard ffmpeg mpv"
-    lsp="black lua-language-server pyright cargo rust-analyzer"
+    lsp="lua-language-server pyright cargo rust-analyzer"
     printf " $xdg_ninja $flatpak $screenshot $image_edit $media_utils $lsp "
 }
 
