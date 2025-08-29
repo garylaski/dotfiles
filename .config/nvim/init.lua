@@ -1,15 +1,5 @@
 -- Theme
-vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
-    callback = function()
-        local ft = vim.bo.filetype
-        if ft == "python" then
-            vim.cmd.colorscheme("gruvbox")
-        else
-            vim.cmd.colorscheme("default")
-            vim.cmd.colorscheme("theme")
-        end
-    end,
-})
+vim.cmd.colorscheme("gruvbox")
 
 -- Opts
 vim.opt.clipboard = "unnamedplus"

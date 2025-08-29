@@ -1,6 +1,6 @@
 # Enable colors and change prompt:
 autoload -U colors && colors
-PS1="%B%{$fg[white]%}%~%{$reset_color%} $%b "
+PS1="%B%{$fg[foreground]%}%~%{$reset_color%} $%b "
 setopt autocd
 unsetopt PROMPT_SP
 stty stop undef
