@@ -48,6 +48,7 @@ export CLASSPATH="$XDG_DATA_HOME/java"
 export PSQL_HISTORY="$XDG_DATA_HOME/psql_history"
 export CARGO_HOME="$XDG_DATA_HOME"/cargo
 export DVDCSS_CACHE="$XDG_DATA_HOME"/dvdcss
+export RUFF_CACHE_DIR="$XDG_CACHE_HOME"/ruff
 
 # CONFIGS
 export FZF_DEFAULT_OPTS="--layout=reverse --height 40%"

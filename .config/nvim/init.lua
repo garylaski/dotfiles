@@ -56,8 +56,8 @@ end
 
 local function format_python(filename)
     local format_commands = {
-        "black --quiet ",
-        "isort --profile black ",
+        "ruff format ",
+        "ruff check . --select I --fix ",
     }
     run_format_commands(format_commands, filename)
 end
@@ -77,6 +77,14 @@ local function format()
         return
     end
     format_func(filename)
+    -- Reload buffer from disk after formatting
+    if vim.api.nvim_buf_get_option(bufnr, "modified") then
+        -- Don't reload if buffer has unsaved changes
+        print("Buffer has unsaved changes; not reloading.")
+    else
+        -- Reload buffer from file
+        vim.cmd("checktime " .. bufnr)
+    end
 end
 
 vim.api.nvim_create_user_command("Format", format, {})
@@ -85,7 +93,7 @@ vim.api.nvim_create_user_command("Format", format, {})
 vim.api.nvim_create_autocmd('LspAttach', {
     callback = function(event)
         local opts = { buffer = event.buf }
-        vim.keymap.set('n', '<leader>fm', format, opts)
+        vim.keymap.set('n', '<leader>f', format, opts)
         vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
         vim.keymap.set('n', 'gs', vim.lsp.buf.declaration, opts)
         vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
